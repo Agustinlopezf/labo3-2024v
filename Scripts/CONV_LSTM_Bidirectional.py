@@ -25,7 +25,7 @@ ventas_producto_mes.drop(columns=['periodo'], inplace = True)
 
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout
+from tensorflow.keras.layers import LSTM, Dense, Dropout, Conv1D
 from sklearn.preprocessing import StandardScaler
 
 
@@ -65,9 +65,11 @@ lista_productos_LSTM = []
 lista_predicciones_LSTM = []
 scaler_list = []
 
+i = 0
 for producto in ventas_producto_mes['product_id'].unique():
     if producto in list(productos_predecir['product_id']):
-        #print(f'Entrenando producto {producto}')
+        print(f'Entrenando producto nro {i}')
+        i += 1
         ventas_mes_por_producto = ventas_producto_mes[ventas_producto_mes['product_id'] == producto].copy()
         #print(f'Tiene {len(ventas_mes_por_producto)} ejemplos de entrenamiento')
         ventas_mes_por_producto.drop(columns=['product_id'], inplace = True)
@@ -80,9 +82,10 @@ for producto in ventas_producto_mes['product_id'].unique():
             #Formatear valores para input LSTM
             X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
 
-            # Create and fit the LSTM network
+            # Create and fit the Conv1D + LSTM network
             model = Sequential()
-            model.add(LSTM(64, return_sequences=True, input_shape=(ventana_input, 1), recurrent_dropout=0.25))
+            model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(ventana_input, 1)))
+            model.add(LSTM(64, return_sequences=True, recurrent_dropout=0.25))
             model.add(LSTM(32, recurrent_dropout=0.25))
             model.add(Dropout(0.5))
             model.add(Dense(ventana_output))
