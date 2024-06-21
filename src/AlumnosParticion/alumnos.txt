@@ -1,0 +1,57 @@
+id	alumno
+1	Allegro, Pedro
+2	Basilio, Horacio
+3	Bassan, Micaela
+4	Beloqui, Gonzalo Ezequiel
+5	Bogorni, Fernando
+6	Buccellato, Marcos Gilberto
+7	Caccianini, Antonela
+8	Canossini, Stefano
+9	Carranza, Carina
+10	Carreño Patino, Ludwing Bernart
+11	Cerutti, Leandro
+12	Chavarria, Aureliano
+13	Coz, Fernando
+14	Diaz, Dario Ezequiel
+15	Distefano, Marcela
+16	Donadia, Gabriel
+17	Dottore, Ignacio
+18	Elia, Esteban
+19	Estevez, Rodrigo
+20	Falcones García, Johanna Estefanía
+21	Fattore, Waldo
+22	Figueroa, Martin
+23	Fiori, Ana Carla
+24	García, Matías
+25	García Rio, Veronica
+26	Gasquez, Tamara
+27	Garro , Ivana Noelia
+28	Gerschenfeld , Martín
+29	Gimenez, Rafael
+30	Graffe Muñoz, Anders
+31	Ifran, Hernán
+32	Joglar, Damian
+33	Ku Cuadra, Eduardo
+34	Lanzi, Federico
+35	Larregui, Gastón
+36	Levit, Mariana
+37	Lopez Fredes, Agustín Antonio
+38	Marchetta, Mariano
+39	Martignoni, Franco
+40	Mazzola, Gabriel
+41	Mazzoni, Luciano
+42	Montes de Oca, Jose Andres
+43	Monzon, Fernanda María
+44	Noval, Johanna Daiana
+45	Núñez, Patricia Graciela
+46	Orduz, Mónica
+47	Piccin, Germán
+48	Pijuan, Guillermo
+49	Puyuelo, Corina
+50	Reyes, Alejandra
+51	Ríos, Soledad
+52	Rodriguez, José Antonio
+53	Rodríguez Saá, Milagros
+54	Roitman, Karina
+55	Santamaría, César Germán
+56	Valdés Castro, José Eduardo
