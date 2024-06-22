@@ -3,14 +3,15 @@ import os
 import numpy as np
 
 #Para VM
+
 carpeta_datasets= '~/buckets/b1/datasets'
 carpeta_exp= '~/buckets/b1/exp'
 
 
 #Para Máquina Local
 '''
-carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Datos'
-carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Resultados'
+carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Datos'
+carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Resultados'
 '''
 nombre_archivo_resultados = 'resultados_LSTM_producto_cliente'
 
@@ -87,22 +88,26 @@ for producto in ventas_producto_mes['product_id'].unique():
             ventas_mes_por_producto_escalado = scaler.fit_transform(ventas_mes_por_producto)
             scaler_list.append(scaler)
             if len(ventas_mes_por_producto) > ventana_input:
-                #Formatear valores para input LSTM
-                X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
-                # Create and fit the LSTM network
-                model = Sequential()
-                model.add(LSTM(64, return_sequences=True, input_shape=(ventana_input, 1), recurrent_dropout=0.25))
-                model.add(LSTM(32, recurrent_dropout=0.25))
-                model.add(Dropout(0.5))
-                model.add(Dense(ventana_output))
-                model.compile(loss='mean_squared_error', optimizer='adam')
-                model.fit(X, Y, epochs=100, batch_size=1, verbose=0)
+                try:
+                    #Formatear valores para input LSTM
+                    X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
+                    # Create and fit the LSTM network
+                    model = Sequential()
+                    model.add(LSTM(64, return_sequences=True, input_shape=(ventana_input, 1), recurrent_dropout=0.25))
+                    model.add(LSTM(32, recurrent_dropout=0.25))
+                    model.add(Dropout(0.5))
+                    model.add(Dense(ventana_output))
+                    model.compile(loss='mean_squared_error', optimizer='adam')
+                    model.fit(X, Y, epochs=100, batch_size=1, verbose=1)
 
-                #Predecir valores
-                prediccion_mes_2 = predecir(X[-1].reshape(1,-1), model, scaler)[1]
+                    #Predecir valores
+                    prediccion_mes_2 = predecir(X[-1].reshape(1,-1), model, scaler)[1]
 
-                lista_productos.append(producto)
-                lista_predicciones.append(prediccion_mes_2)
+                    lista_productos.append(producto)
+                    lista_predicciones.append(prediccion_mes_2)
+                except:
+                    lista_productos.append(producto)
+                    lista_predicciones.append(ventas_mes_por_producto['tn'].mean())
             else:
                 print('Valores insuficientes para usar ventana de 12 para LSTM, se predice por promedio')
                 lista_productos.append(producto)

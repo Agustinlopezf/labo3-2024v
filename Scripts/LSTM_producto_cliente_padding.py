@@ -9,8 +9,8 @@ carpeta_exp= '~/buckets/b1/exp'
 
 #Para Máquina Local
 '''
-carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Datos'
-carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Resultados'
+carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Datos'
+carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Resultados'
 '''
 nombre_archivo_resultados = 'resultados_LSTM_producto_cliente_padding'
 

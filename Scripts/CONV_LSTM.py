@@ -2,15 +2,14 @@ import pandas as pd
 import os
 import numpy as np
 
-carpeta_script = 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Experimentos en clase\\Scripts'
-carpeta_resultados = 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Experimentos en clase\\Resultados'
-carpeta_datos = 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Experimentos en clase\\Datos'
+carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Datos'
+carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Resultados'
 
 #Carga archivos
-sell_in = pd.read_csv(os.path.join(carpeta_datos, 'sell-in.txt'), delimiter = '\t')
-tb_productos = pd.read_csv(os.path.join(carpeta_datos, 'tb_productos.txt'), delimiter = '\t')
-tb_stocks = pd.read_csv(os.path.join(carpeta_datos, 'tb_stocks.txt'), delimiter = '\t')
-productos_predecir = pd.read_csv(os.path.join(carpeta_datos, 'productos_a_predecir.txt'), delimiter = '\t') 
+sell_in = pd.read_csv(os.path.join(carpeta_datasets, 'sell-in.txt'), delimiter = '\t')
+tb_productos = pd.read_csv(os.path.join(carpeta_datasets, 'tb_productos.txt'), delimiter = '\t')
+tb_stocks = pd.read_csv(os.path.join(carpeta_datasets, 'tb_stocks.txt'), delimiter = '\t')
+productos_predecir = pd.read_csv(os.path.join(carpeta_datasets, 'productos_a_predecir.txt'), delimiter = '\t') 
 
 
 sell_in.head()
@@ -82,7 +81,6 @@ for producto in ventas_producto_mes['product_id'].unique()[:5]:
             #Formatear valores para input LSTM
             print(X)
             X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
-
             # Create and fit the Conv1D + LSTM network
             model = Sequential()
             model.add(Conv1D(filters=64, kernel_size=2, activation='relu', input_shape=(ventana_input, 1)))
@@ -106,4 +104,4 @@ for producto in ventas_producto_mes['product_id'].unique()[:5]:
 
 resultados_kaggle_LSTM = pd.DataFrame({'product_id': lista_productos_LSTM, 'tn': lista_predicciones_LSTM})
 resultados_kaggle_LSTM['tn'] = resultados_kaggle_LSTM['tn'].apply(lambda x: max(0,x))
-resultados_kaggle_LSTM.to_csv(os.path.join(carpeta_resultados, 'predicciones_LSTM_droput.csv'), index= False)
+resultados_kaggle_LSTM.to_csv(os.path.join(carpeta_exp, 'predicciones_LSTM_droput.csv'), index= False)
