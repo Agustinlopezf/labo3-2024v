@@ -66,7 +66,7 @@ lista_predicciones_LSTM = []
 scaler_list = []
 
 i = 0
-for producto in ventas_producto_mes['product_id'].unique():
+for producto in ventas_producto_mes['product_id'].unique()[:5]:
     if producto in list(productos_predecir['product_id']):
         print(f'Entrenando producto nro {i}')
         i += 1
@@ -80,6 +80,7 @@ for producto in ventas_producto_mes['product_id'].unique():
         scaler_list.append(scaler)
         try:
             #Formatear valores para input LSTM
+            print(X)
             X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
 
             # Create and fit the Conv1D + LSTM network

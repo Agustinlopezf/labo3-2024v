@@ -12,7 +12,7 @@ carpeta_exp= '~/buckets/b1/exp'
 carpeta_datasets= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Datos'
 carpeta_exp= 'C:\\Users\\alope\\Desktop\\Trámites\\Maestria Data Science - Universidad Austral\\Laboratorio de implementación 3\\Repositorio Github\\Resultados'
 '''
-nombre_archivo_resultados = 'resultados_LSTM_producto_cliente'
+nombre_archivo_resultados = 'resultados_LSTM_producto_cliente_padding'
 
 #Carga archivos
 sell_in = pd.read_csv(os.path.join(carpeta_datasets, 'sell-in.txt'), delimiter = '\t')
@@ -86,28 +86,27 @@ for producto in ventas_producto_mes['product_id'].unique():
             scaler = StandardScaler()
             ventas_mes_por_producto_escalado = scaler.fit_transform(ventas_mes_por_producto)
             scaler_list.append(scaler)
-            if len(ventas_mes_por_producto) > ventana_input:
-                #Formatear valores para input LSTM
-                X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
-                # Create and fit the LSTM network
-                model = Sequential()
-                model.add(LSTM(64, return_sequences=True, input_shape=(ventana_input, 1), recurrent_dropout=0.25))
-                model.add(LSTM(32, recurrent_dropout=0.25))
-                model.add(Dropout(0.5))
-                model.add(Dense(ventana_output))
-                model.compile(loss='mean_squared_error', optimizer='adam')
-                model.fit(X, Y, epochs=100, batch_size=1, verbose=0)
+            # Padding ventas_mes_por_producto con ceros
+            if len(ventas_mes_por_producto) < ventana_input:
+                padding_length = ventana_input - len(ventas_mes_por_producto)
+                padding = pd.DataFrame(0, index=range(padding_length), columns=ventas_mes_por_producto.columns)
+                ventas_mes_por_producto = pd.concat([padding, ventas_mes_por_producto]).reset_index(drop=True)
+            #Formatear valores para input LSTM
+            X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
+            # Create and fit the LSTM network
+            model = Sequential()
+            model.add(LSTM(64, return_sequences=True, input_shape=(ventana_input, 1), recurrent_dropout=0.25))
+            model.add(LSTM(32, recurrent_dropout=0.25))
+            model.add(Dropout(0.5))
+            model.add(Dense(ventana_output))
+            model.compile(loss='mean_squared_error', optimizer='adam')
+            model.fit(X, Y, epochs=100, batch_size=1, verbose=0)
 
-                #Predecir valores
-                prediccion_mes_2 = predecir(X[-1].reshape(1,-1), model, scaler)[1]
+            #Predecir valores
+            prediccion_mes_2 = predecir(X[-1].reshape(1,-1), model, scaler)[1]
 
-                lista_productos.append(producto)
-                lista_predicciones.append(prediccion_mes_2)
-            else:
-                print('Valores insuficientes para usar ventana de 12 para LSTM, se predice por promedio')
-                lista_productos.append(producto)
-                lista_predicciones.append(ventas_mes_por_producto['tn'].mean())
-
+            lista_productos.append(producto)
+            lista_predicciones.append(prediccion_mes_2)
 
 resultados_kaggle_por_customer = pd.DataFrame({'product_id': lista_productos, 'customer_id': lista_customers, 'tn': lista_predicciones})
 resultados_kaggle_por_customer['tn'] = resultados_kaggle_por_customer['tn'].apply(lambda x: max(0,x))
@@ -115,3 +114,5 @@ resultados_kaggle_por_customer['tn'] = resultados_kaggle_por_customer['tn'].appl
 resultados_kaggle = resultados_kaggle_por_customer.groupby(['product_id'])['tn'].sum()
 resultados_kaggle = resultados_kaggle.reset_index()
 resultados_kaggle.to_csv(os.path.join(carpeta_exp, nombre_archivo_resultados + '.csv'), index= False)
+
+
