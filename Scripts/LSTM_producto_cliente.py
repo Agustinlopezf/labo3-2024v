@@ -73,6 +73,8 @@ lista_predicciones = []
 lista_customers = []
 scaler_list = []
 
+fecha_final = ventas_producto_mes.index.max()
+
 i = 0
 for producto in ventas_producto_mes['product_id'].unique():
     if producto in list(productos_predecir['product_id']):
@@ -82,6 +84,13 @@ for producto in ventas_producto_mes['product_id'].unique():
             lista_customers.append(cliente)
             ventas_mes_por_producto = ventas_producto_mes[(ventas_producto_mes['product_id'] == producto) & (ventas_producto_mes['customer_id'] == cliente)].copy()
             ventas_mes_por_producto.drop(columns=['product_id', 'customer_id'], inplace = True)
+
+            fecha_inicial = ventas_mes_por_producto.index.min()
+            #Realizar padding de los valores faltantes con 0 (entre las fechas inicial y final)
+            date_range = pd.date_range(start=fecha_inicial, end=fecha_final, freq='MS')
+            ventas_mes_por_producto = ventas_mes_por_producto.reindex(date_range)
+            ventas_mes_por_producto['tn'] = ventas_mes_por_producto['tn'].fillna(0)
+
 
             #Escalar valor
             scaler = StandardScaler()

@@ -3,6 +3,7 @@ import os
 import numpy as np
 
 #Para VM
+
 carpeta_datasets= '~/buckets/b1/datasets'
 carpeta_exp= '~/buckets/b1/exp'
 
@@ -72,25 +73,29 @@ lista_predicciones = []
 lista_customers = []
 scaler_list = []
 
+fecha_final = ventas_producto_mes.index.max()
+fecha_inicial = ventas_producto_mes.index.min()
+
 i = 0
 for producto in ventas_producto_mes['product_id'].unique():
     if producto in list(productos_predecir['product_id']):
         print(f'Entrenando producto nro {i}')
         i += 1
         for cliente in ventas_producto_mes['customer_id'].unique():
+            print(f'Entrenando cliente: {cliente}, producto: {producto}')
             lista_customers.append(cliente)
             ventas_mes_por_producto = ventas_producto_mes[(ventas_producto_mes['product_id'] == producto) & (ventas_producto_mes['customer_id'] == cliente)].copy()
             ventas_mes_por_producto.drop(columns=['product_id', 'customer_id'], inplace = True)
+
+            #Realizar padding de los valores faltantes con 0 (entre las fechas inicial y final)
+            date_range = pd.date_range(start=fecha_inicial, end=fecha_final, freq='MS')
+            ventas_mes_por_producto = ventas_mes_por_producto.reindex(date_range)
+            ventas_mes_por_producto['tn'] = ventas_mes_por_producto['tn'].fillna(0)
 
             #Escalar valor
             scaler = StandardScaler()
             ventas_mes_por_producto_escalado = scaler.fit_transform(ventas_mes_por_producto)
             scaler_list.append(scaler)
-            # Padding ventas_mes_por_producto con ceros
-            if len(ventas_mes_por_producto) < ventana_input:
-                padding_length = ventana_input - len(ventas_mes_por_producto)
-                padding = pd.DataFrame(0, index=range(padding_length), columns=ventas_mes_por_producto.columns)
-                ventas_mes_por_producto = pd.concat([padding, ventas_mes_por_producto]).reset_index(drop=True)
             #Formatear valores para input LSTM
             X, Y =crear_dataset_supervisado(ventas_mes_por_producto_escalado, ventana_input, ventana_output)
             # Create and fit the LSTM network
@@ -100,7 +105,7 @@ for producto in ventas_producto_mes['product_id'].unique():
             model.add(Dropout(0.5))
             model.add(Dense(ventana_output))
             model.compile(loss='mean_squared_error', optimizer='adam')
-            model.fit(X, Y, epochs=100, batch_size=1, verbose=0)
+            model.fit(X, Y, epochs=100, batch_size=1, verbose=1)
 
             #Predecir valores
             prediccion_mes_2 = predecir(X[-1].reshape(1,-1), model, scaler)[1]
@@ -114,5 +119,4 @@ resultados_kaggle_por_customer['tn'] = resultados_kaggle_por_customer['tn'].appl
 resultados_kaggle = resultados_kaggle_por_customer.groupby(['product_id'])['tn'].sum()
 resultados_kaggle = resultados_kaggle.reset_index()
 resultados_kaggle.to_csv(os.path.join(carpeta_exp, nombre_archivo_resultados + '.csv'), index= False)
-
 
