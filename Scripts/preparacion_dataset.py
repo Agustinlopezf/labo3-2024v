@@ -12,7 +12,7 @@ import os
 import numpy as np
 import joblib
 
-entorno = 'local'  # Elegir "VM" o "local" para correr en entorno local
+entorno = 'VM'  # Elegir "VM" o "local" para correr en entorno local
 nombre_experimento = 'LSTM_producto'
 ventana_input = 12
 ventana_output = 2

@@ -15,7 +15,7 @@ from tensorflow.keras.layers import LSTM, Dense, Dropout
 from sklearn.preprocessing import RobustScaler, LabelEncoder
 import joblib
 
-entorno = 'local'  # Elegir "VM" o "local" para correr en entorno local
+entorno = 'VM'  # Elegir "VM" o "local" para correr en entorno local
 correr_productos_mayor_ventas = True #Seleccionar True para correr solo en los productos de mas ventas del listado lista_productos_mayor_ventas
 nombre_experimento = 'LSTM_producto_cliente'
 nombre_archivo_log = 'log_predicciones.csv'
