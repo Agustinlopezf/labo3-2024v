@@ -9,6 +9,8 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, RepeatVector, TimeDistributed
 from sklearn.preprocessing import RobustScaler
 from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.metrics import MeanSquaredError
+import json
 
 entorno = 'VM'  # Elegir "VM" o "local" para correr en entorno local
 nombre_experimento = 'Encoder-Decoder-producto_optuna'
@@ -16,6 +18,8 @@ ventana_input = 12
 ventana_output = 2
 ventana_test = 3
 lags = 6
+cant_productos_considerar = 50
+num_trials = 20
 
 # Configurar entorno
 if entorno == 'VM':
@@ -55,6 +59,12 @@ ventas_producto_mes.set_index('Timestamp', inplace=True)
 ventas_producto_mes
 
 # %%
+ventas_dic_2019 = ventas_producto_mes[ventas_producto_mes.index == '2019-12-01']
+ventas_dic_2019 = ventas_dic_2019.sort_values(by='tn', ascending = False)
+lista_productos_mayores_ventas = list(ventas_dic_2019.iloc[:cant_productos_considerar]['product_id'].values)
+lista_productos_mayores_ventas
+
+# %%
 def crear_dataset_supervisado(array, input_length, output_length):
     # Inicialización
     X, Y = [], []    # Listados que contendrán los datos de entrada y salida del modelo
@@ -88,7 +98,7 @@ def crear_modelo_lstm_encoder_decoder(input_shape, units_lstm, dropout_rate, lea
     decoder_outputs = TimeDistributed(Dense(1))(decoder)
     
     model = Model(inputs=encoder_inputs, outputs=decoder_outputs)
-    model.compile(loss='mean_squared_error', optimizer=Adam(learning_rate=learning_rate))
+    model.compile(loss='mean_squared_error', optimizer=Adam(learning_rate=learning_rate), metrics=[MeanSquaredError()])
     return model
 
 # %%
@@ -109,7 +119,7 @@ def objective(trial):
 
     loss_list = []
 
-    for producto in ventas_producto_mes['product_id'].unique():
+    for producto in lista_productos_mayores_ventas:
         ventas_mes_por_producto = ventas_producto_mes[ventas_producto_mes['product_id'] == producto].copy()
         ventas_mes_por_producto.drop(columns=['product_id'], inplace=True)
 
@@ -141,7 +151,7 @@ def objective(trial):
 # %%
 # Ejecución de Optuna
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=50)
+study.optimize(objective, n_trials=num_trials)
 
 # Guardar los mejores hiperparámetros
 best_params = study.best_params
