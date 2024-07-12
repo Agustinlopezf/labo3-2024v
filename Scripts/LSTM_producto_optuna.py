@@ -2,20 +2,21 @@
 import pandas as pd
 import os
 import numpy as np
-import json
 import optuna
 import logging
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, LSTM, Dense, Dropout, RepeatVector, TimeDistributed
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
 from sklearn.preprocessing import RobustScaler
 from tensorflow.keras.optimizers import Adam
 
 entorno = 'VM'  # Elegir "VM" o "local" para correr en entorno local
-nombre_experimento = 'Encoder-Decoder-producto_optuna'
+nombre_experimento = 'LSTM_producto_optuna'
 ventana_input = 12
 ventana_output = 2
 ventana_test = 3
 lags = 6
+
+
 
 # Configurar entorno
 if entorno == 'VM':
@@ -31,6 +32,7 @@ carpeta_exp = os.path.join(carpeta_exp_base, nombre_experimento)
 if not os.path.exists(carpeta_exp):
     os.makedirs(carpeta_exp)
 
+    
 # Configurar logger de Optuna
 optuna.logging.set_verbosity(optuna.logging.INFO)
 logger = optuna.logging.get_logger("optuna")
@@ -77,23 +79,18 @@ def crear_dataset_supervisado(array, input_length, output_length):
     return X, Y
 
 # %%
-# Función para crear el modelo LSTM encoder-decoder
-def crear_modelo_lstm_encoder_decoder(input_shape, units_lstm, dropout_rate, learning_rate):
-    encoder_inputs = Input(shape=input_shape)
-    encoder = LSTM(units_lstm[0], return_sequences=True, recurrent_dropout=0.25)(encoder_inputs)
-    encoder = LSTM(units_lstm[1], return_sequences=False, recurrent_dropout=0.25)(encoder)
-    
-    decoder_inputs = RepeatVector(ventana_output)(encoder)
-    decoder = LSTM(units_lstm[2], return_sequences=True, recurrent_dropout=0.25)(decoder_inputs)
-    decoder_outputs = TimeDistributed(Dense(1))(decoder)
-    
-    model = Model(inputs=encoder_inputs, outputs=decoder_outputs)
+# Función para crear el modelo LSTM
+def crear_modelo_lstm(input_shape, units_lstm, dropout_rate, learning_rate):
+    model = Sequential()
+    model.add(LSTM(units_lstm[0], return_sequences=True, input_shape=input_shape, recurrent_dropout=0.25))
+    model.add(LSTM(units_lstm[1], return_sequences=True, recurrent_dropout=0.25))
+    model.add(LSTM(units_lstm[2], recurrent_dropout=0.25))
+    model.add(Dropout(dropout_rate))
+    model.add(Dense(ventana_output))
     model.compile(loss='mean_squared_error', optimizer=Adam(learning_rate=learning_rate))
     return model
 
 # %%
-scaler_list = []
-
 # Función para la optimización con Optuna
 def objective(trial):
     # Definir hiperparámetros a optimizar
@@ -107,6 +104,9 @@ def objective(trial):
     batch_size = trial.suggest_int('batch_size', 1, 32)
     epochs = trial.suggest_int('epochs', 50, 200)
 
+    lista_productos_LSTM = []
+    lista_predicciones_LSTM = []
+    scaler_list = []
     loss_list = []
 
     for producto in ventas_producto_mes['product_id'].unique():
@@ -128,8 +128,8 @@ def objective(trial):
             X_train, X_test = X[:train_size], X[train_size:]
             Y_train, Y_test = Y[:train_size], Y[train_size:]
 
-            # Crear y ajustar el modelo LSTM encoder-decoder
-            model = crear_modelo_lstm_encoder_decoder((ventana_input, X.shape[2]), units_lstm, dropout_rate, learning_rate)
+            # Crear y ajustar el modelo LSTM
+            model = crear_modelo_lstm((ventana_input, X.shape[2]), units_lstm, dropout_rate, learning_rate)
             model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
 
             # Evaluar el modelo
@@ -141,7 +141,7 @@ def objective(trial):
 # %%
 # Ejecución de Optuna
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=50)
+study.optimize(objective, n_trials=10)
 
 # Guardar los mejores hiperparámetros
 best_params = study.best_params
