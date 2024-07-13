@@ -140,6 +140,7 @@ def objective(trial):
     loss_list = []
 
     for producto in lista_productos_mayores_ventas:
+        print(producto)
         ventas_mes_por_producto = ventas_producto_mes[ventas_producto_mes['product_id'] == producto].copy()
         ventas_mes_por_producto.drop(columns=['product_id'], inplace=True)
         
@@ -149,7 +150,7 @@ def objective(trial):
         ventas_mes_por_producto_features = scaler.fit_transform(ventas_mes_por_producto_features)
 
 
-        if len(ventas_mes_por_producto) >= (ventana_input + ventana_output):
+        if len(ventas_mes_por_producto_features) >= (ventana_input + ventana_output):
             # Formatear valores para input LSTM
             X, Y = crear_dataset_supervisado(ventas_mes_por_producto_features, ventana_input, ventana_output)
 
