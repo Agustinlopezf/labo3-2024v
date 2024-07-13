@@ -11,7 +11,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import MeanSquaredError
 import json
 
-entorno = 'local'  # Elegir "VM" o "local" para correr en entorno local
+entorno = 'VM'  # Elegir "VM" o "local" para correr en entorno local
 nombre_experimento = 'LSTM_producto_FE_modelo_final_optuna'
 nombre_carpeta_optuna = 'LSTM_producto_FE_optuna'
 ventana_input = 12
