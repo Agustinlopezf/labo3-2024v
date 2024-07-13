@@ -47,7 +47,7 @@ with open(os.path.join(os.path.join(carpeta_exp_base,nombre_carpeta_optuna), 'me
     best_params = json.load(f)
 print(best_params)
 
-units_lstm = [best_params['units_lstm_1'], best_params['units_lstm_2'], best_params['units_lstm_1']]
+units_lstm = [best_params['units_lstm_1'], best_params['units_lstm_2'], best_params['units_lstm_3']]
 dropout_rate = best_params['dropout_rate']
 learning_rate = best_params['learning_rate']
 batch_size = best_params['batch_size']
