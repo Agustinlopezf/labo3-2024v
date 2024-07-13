@@ -150,7 +150,7 @@ def objective(trial):
         ventas_mes_por_producto_features = scaler.fit_transform(ventas_mes_por_producto_features)
 
 
-        if len(ventas_mes_por_producto_features) >= (ventana_input + ventana_output):
+        if len(ventas_mes_por_producto_features) >= (ventana_input + ventana_output + ventana_test):
             # Formatear valores para input LSTM
             X, Y = crear_dataset_supervisado(ventas_mes_por_producto_features, ventana_input, ventana_output)
 
