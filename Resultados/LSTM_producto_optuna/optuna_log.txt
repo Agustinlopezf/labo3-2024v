@@ -1,0 +1,351 @@
+2024-07-12 11:47:36,285 - INFO - A new study created in memory with name: no-name-10dedd53-1fc9-4ba2-a7a2-89ad6c8fa1f3
+2024-07-12 11:50:08,948 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 102, 'units_lstm_2': 63, 'units_lstm_3': 87, 'dropout_rate': 0.3582027744462416, 'learning_rate': 0.0036119472298915202, 'batch_size': 25, 'epochs': 157} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_2752\1728209627.py", line 40, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 926, in _call
+    return self._no_variable_creation_fn(*args, **kwds)  # pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 11:50:08,961 - WARNING - Trial 0 failed with value None.
+2024-07-12 13:50:32,937 - INFO - A new study created in memory with name: no-name-02e9de8e-8af3-4858-af38-f8b3c6c1b761
+2024-07-12 15:40:11,525 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 101, 'units_lstm_2': 107, 'units_lstm_3': 68, 'dropout_rate': 0.390374263454779, 'learning_rate': 0.0007619872037454179, 'batch_size': 9, 'epochs': 87} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_10224\1728209627.py", line 40, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 926, in _call
+    return self._no_variable_creation_fn(*args, **kwds)  # pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 15:40:11,530 - WARNING - Trial 0 failed with value None.
+2024-07-12 15:44:15,506 - INFO - A new study created in memory with name: no-name-fc3ac0a3-76df-4660-840f-335db7753cb3
+2024-07-12 15:44:15,506 - INFO - A new study created in memory with name: no-name-fc3ac0a3-76df-4660-840f-335db7753cb3
+2024-07-12 15:45:38,356 - INFO - A new study created in memory with name: no-name-cd5beeba-348d-4336-8dbc-cf40ad62c958
+2024-07-12 15:47:12,939 - INFO - Trial 0 finished with value: 1.1303718955152564 and parameters: {'units_lstm_1': 53, 'units_lstm_2': 67, 'units_lstm_3': 60, 'dropout_rate': 0.43092586689185264, 'learning_rate': 0.009150024221306646, 'batch_size': 9, 'epochs': 131}. Best is trial 0 with value: 1.1303718955152564.
+2024-07-12 15:54:34,069 - INFO - Trial 1 finished with value: 1.328211610722873 and parameters: {'units_lstm_1': 100, 'units_lstm_2': 122, 'units_lstm_3': 70, 'dropout_rate': 0.46989307335018293, 'learning_rate': 0.0031326972012723437, 'batch_size': 1, 'epochs': 158}. Best is trial 0 with value: 1.1303718955152564.
+2024-07-12 18:57:55,422 - INFO - A new study created in memory with name: no-name-6a8a9877-d386-4df5-b03d-3e5b85dc099a
+2024-07-12 18:57:55,426 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 64, 'units_lstm_2': 111, 'units_lstm_3': 63, 'dropout_rate': 0.25003786185343674, 'learning_rate': 0.007096150835477619, 'batch_size': 14, 'epochs': 72} because of the following error: ValueError('Expected 2D array, got 1D array instead:\narray=[ 934.77222  798.0162  1303.35771 1069.9613  1502.20132 1520.06539\n 1030.67391 1267.39462 1316.94604 1439.75563 1580.47401 1049.3886\n 1169.07532 1043.7647  1856.83534 1251.28462 1293.89788 1150.79169\n 1470.41009 1800.96168 1438.67455 2295.19832 1813.01511 1486.68669\n 1275.77351 1259.09363 1470.65653 1647.63848 1629.78233 1109.93769\n 1678.99318 1261.34529 1660.00561 1561.50552 1397.37231 1504.68856].\nReshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.').
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_26520\2732839985.py", line 29, in objective
+    ventas_mes_por_producto['tn'] = scaler_tn.fit_transform(ventas_mes_por_producto['tn'])
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\_set_output.py", line 140, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 915, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 1151, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\preprocessing\_data.py", line 1533, in fit
+    X = self._validate_data(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\base.py", line 604, in _validate_data
+    out = check_array(X, input_name="X", **check_params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\utils\validation.py", line 940, in check_array
+    raise ValueError(
+ValueError: Expected 2D array, got 1D array instead:
+array=[ 934.77222  798.0162  1303.35771 1069.9613  1502.20132 1520.06539
+ 1030.67391 1267.39462 1316.94604 1439.75563 1580.47401 1049.3886
+ 1169.07532 1043.7647  1856.83534 1251.28462 1293.89788 1150.79169
+ 1470.41009 1800.96168 1438.67455 2295.19832 1813.01511 1486.68669
+ 1275.77351 1259.09363 1470.65653 1647.63848 1629.78233 1109.93769
+ 1678.99318 1261.34529 1660.00561 1561.50552 1397.37231 1504.68856].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
+2024-07-12 18:57:55,432 - WARNING - Trial 0 failed with value None.
+2024-07-12 19:00:45,682 - INFO - A new study created in memory with name: no-name-670fc991-d074-49c6-9434-71a72b19031a
+2024-07-12 19:00:45,685 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 118, 'units_lstm_2': 105, 'units_lstm_3': 40, 'dropout_rate': 0.24046017849487714, 'learning_rate': 0.0078169512219529, 'batch_size': 20, 'epochs': 143} because of the following error: KeyError('edad_producto').
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3652, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas\_libs\index.pyx", line 147, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 176, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7080, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'edad_producto'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_26520\3383601431.py", line 30, in objective
+    ventas_mes_por_producto['edad_producto'] = scaler_edad.fit_transform(np.array(ventas_mes_por_producto['edad_producto']).reshape(-1,1))
+                                                                                  ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\pandas\core\indexes\base.py", line 3654, in get_loc
+    raise KeyError(key) from err
+KeyError: 'edad_producto'
+2024-07-12 19:00:45,689 - WARNING - Trial 0 failed with value None.
+2024-07-12 19:04:02,127 - INFO - A new study created in memory with name: no-name-0019659b-9ef5-4985-a8d7-80db115d12f7
+2024-07-12 19:04:45,714 - INFO - Trial 0 finished with value: 3.1907825738191606 and parameters: {'units_lstm_1': 75, 'units_lstm_2': 59, 'units_lstm_3': 110, 'dropout_rate': 0.3445095500515053, 'learning_rate': 0.007283594830097051, 'batch_size': 12, 'epochs': 131}. Best is trial 0 with value: 3.1907825738191606.
+2024-07-12 19:07:44,136 - INFO - Trial 1 finished with value: 3.0639173805713655 and parameters: {'units_lstm_1': 114, 'units_lstm_2': 114, 'units_lstm_3': 46, 'dropout_rate': 0.28857803585302594, 'learning_rate': 0.0083483944530117, 'batch_size': 6, 'epochs': 126}. Best is trial 1 with value: 3.0639173805713655.
+2024-07-12 21:10:34,412 - INFO - A new study created in memory with name: no-name-ed4cb449-42c4-4bca-9a04-a22a732f9861
+2024-07-12 21:10:34,412 - INFO - A new study created in memory with name: no-name-ed4cb449-42c4-4bca-9a04-a22a732f9861
+2024-07-12 21:10:34,412 - INFO - A new study created in memory with name: no-name-ed4cb449-42c4-4bca-9a04-a22a732f9861
+2024-07-12 21:10:34,439 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 120, 'units_lstm_2': 38, 'units_lstm_3': 82, 'dropout_rate': 0.42247176659187613, 'learning_rate': 0.004913212284731832, 'batch_size': 20, 'epochs': 158} because of the following error: NameError("name 'scaler_list' is not defined").
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\746747229.py", line 26, in objective
+    scaler_list.append(scaler)
+    ^^^^^^^^^^^
+NameError: name 'scaler_list' is not defined
+2024-07-12 21:10:34,439 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 120, 'units_lstm_2': 38, 'units_lstm_3': 82, 'dropout_rate': 0.42247176659187613, 'learning_rate': 0.004913212284731832, 'batch_size': 20, 'epochs': 158} because of the following error: NameError("name 'scaler_list' is not defined").
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\746747229.py", line 26, in objective
+    scaler_list.append(scaler)
+    ^^^^^^^^^^^
+NameError: name 'scaler_list' is not defined
+2024-07-12 21:10:34,439 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 120, 'units_lstm_2': 38, 'units_lstm_3': 82, 'dropout_rate': 0.42247176659187613, 'learning_rate': 0.004913212284731832, 'batch_size': 20, 'epochs': 158} because of the following error: NameError("name 'scaler_list' is not defined").
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\746747229.py", line 26, in objective
+    scaler_list.append(scaler)
+    ^^^^^^^^^^^
+NameError: name 'scaler_list' is not defined
+2024-07-12 21:10:34,441 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:10:34,441 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:10:34,441 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:11:11,879 - INFO - A new study created in memory with name: no-name-85101c09-f303-40e7-9a62-4625b3851390
+2024-07-12 21:11:11,879 - INFO - A new study created in memory with name: no-name-85101c09-f303-40e7-9a62-4625b3851390
+2024-07-12 21:11:11,879 - INFO - A new study created in memory with name: no-name-85101c09-f303-40e7-9a62-4625b3851390
+2024-07-12 21:11:11,879 - INFO - A new study created in memory with name: no-name-85101c09-f303-40e7-9a62-4625b3851390
+2024-07-12 21:11:16,897 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 50, 'units_lstm_2': 82, 'units_lstm_3': 90, 'dropout_rate': 0.3059629157828616, 'learning_rate': 0.009053737039294341, 'batch_size': 22, 'epochs': 68} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\1694034970.py", line 38, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 959, in _call
+    return self._no_variable_creation_fn(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 21:11:16,897 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 50, 'units_lstm_2': 82, 'units_lstm_3': 90, 'dropout_rate': 0.3059629157828616, 'learning_rate': 0.009053737039294341, 'batch_size': 22, 'epochs': 68} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\1694034970.py", line 38, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 959, in _call
+    return self._no_variable_creation_fn(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 21:11:16,897 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 50, 'units_lstm_2': 82, 'units_lstm_3': 90, 'dropout_rate': 0.3059629157828616, 'learning_rate': 0.009053737039294341, 'batch_size': 22, 'epochs': 68} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\1694034970.py", line 38, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 959, in _call
+    return self._no_variable_creation_fn(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 21:11:16,897 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 50, 'units_lstm_2': 82, 'units_lstm_3': 90, 'dropout_rate': 0.3059629157828616, 'learning_rate': 0.009053737039294341, 'batch_size': 22, 'epochs': 68} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_24704\1694034970.py", line 38, in objective
+    model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\utils\traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\keras\engine\training.py", line 1685, in fit
+    tmp_logs = self.train_function(iterator)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\util\traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\polymorphic_function.py", line 959, in _call
+    return self._no_variable_creation_fn(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\polymorphic_function\monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\tensorflow\python\eager\execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-07-12 21:11:16,901 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:11:16,901 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:11:16,901 - WARNING - Trial 0 failed with value None.
+2024-07-12 21:11:16,901 - WARNING - Trial 0 failed with value None.
+2024-07-13 11:24:26,601 - INFO - A new study created in memory with name: no-name-d61e2eee-494a-429a-bd4f-a55d4f6a76a9
+2024-07-13 11:24:26,606 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 71, 'units_lstm_2': 72, 'units_lstm_3': 49, 'dense_units': 23, 'dropout_rate': 0.4619184695700924, 'learning_rate': 0.007878921000069148} because of the following error: TypeError("crear_modelo() missing 1 required positional argument: 'learning_rate'").
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_28600\2906893387.py", line 38, in objective
+    model = crear_modelo((ventana_input, X.shape[2]), units_lstm, dropout_rate, learning_rate)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: crear_modelo() missing 1 required positional argument: 'learning_rate'
+2024-07-13 11:24:26,608 - WARNING - Trial 0 failed with value None.
+2024-07-13 11:26:49,835 - INFO - A new study created in memory with name: no-name-b48a783b-e918-4ec4-b255-16a56ee5e6cb
+2024-07-13 11:26:49,858 - WARNING - Trial 0 failed with parameters: {'units_lstm_1': 56, 'units_lstm_2': 61, 'units_lstm_3': 32, 'dense_units': 24, 'dropout_rate': 0.18586181925053658, 'learning_rate': 0.006582716757807328} because of the following error: TypeError("'int' object is not subscriptable").
+Traceback (most recent call last):
+  File "C:\Users\alope\AppData\Local\Programs\Python\Python311\Lib\site-packages\optuna\study\_optimize.py", line 196, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_28600\3539400457.py", line 41, in objective
+    model = crear_modelo((ventana_input, X.shape[2]),dense_units, units_lstm, dropout_rate, learning_rate)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alope\AppData\Local\Temp\ipykernel_28600\1319172552.py", line 4, in crear_modelo
+    model.add(Bidirectional(units_lstm[0], return_sequences=True, input_shape=input_shape))
+                            ~~~~~~~~~~^^^
+TypeError: 'int' object is not subscriptable
+2024-07-13 11:26:49,859 - WARNING - Trial 0 failed with value None.
